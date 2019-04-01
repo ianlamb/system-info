@@ -15,7 +15,7 @@ class IndexPage extends React.Component {
   }
 
   render() {
-    const {info} = this
+    const { info } = this
     if (!info || typeof window === 'undefined') {
       return null
     }

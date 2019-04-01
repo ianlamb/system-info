@@ -2,9 +2,9 @@
  * Get the user IP throught the webkitRTCPeerConnection
  * @param callback
  * @return undefined
- * 
+ *
  * Compatibility: Firefox and Chrome
- * 
+ *
  * Based on code from: https://ourcodeworld.com/articles/read/257/how-to-get-the-client-ip-address-with-javascript-only
  */
 export function getLocalIP(callback) {
@@ -15,7 +15,7 @@ export function getLocalIP(callback) {
   const pc = new myPeerConnection({
     iceServers: []
   })
-  const noop = function () { }
+  const noop = function() {}
   const ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3})/g
   let localIPs = {}
 
@@ -29,20 +29,20 @@ export function getLocalIP(callback) {
 
   // create offer and set local description
   pc.createOffer()
-    .then((sdp) => {
-      sdp.sdp.split('\n').forEach((line) => {
+    .then(sdp => {
+      sdp.sdp.split('\n').forEach(line => {
         if (line.indexOf('candidate') < 0) return
         line.match(ipRegex).forEach(iterateIP)
       })
 
       pc.setLocalDescription(sdp, noop, noop)
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err)
     })
 
   // listen for candidate events
-  pc.onicecandidate = (ice) => {
+  pc.onicecandidate = ice => {
     if (
       !ice ||
       !ice.candidate ||

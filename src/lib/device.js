@@ -27,7 +27,7 @@ if (typeof window !== 'undefined') {
     'dlnadoc',
     'pov_tv',
     'hbbtv',
-    'ce-html',
+    'ce-html'
   ]
 
   // Main functions
@@ -272,7 +272,7 @@ if (typeof window !== 'undefined') {
     'windows',
     'fxos',
     'meego',
-    'television',
+    'television'
   ])
 
   function setOrientationCache() {

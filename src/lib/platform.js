@@ -6,14 +6,13 @@
  * Available under MIT license <https://mths.be/mit>
  */
 
- var platform = {}
+var platform = {}
 
- function init() {
-
+function init() {
   /** Used to determine if values are of the language type `Object`. */
   var objectTypes = {
     function: true,
-    object: true,
+    object: true
   }
 
   /** Used as a reference to the global object. */
@@ -101,7 +100,7 @@
       '5.01': '2000 SP1',
       '5.0': '2000',
       '4.0': 'NT',
-      '4.90': 'ME',
+      '4.90': 'ME'
     }
     // Detect Windows version from platform tokens.
     if (
@@ -373,7 +372,7 @@
       'NetFront',
       'Tasman',
       'KHTML',
-      'Gecko',
+      'Gecko'
     ])
 
     /* Detectable browser names (order is important). */
@@ -423,7 +422,7 @@
       { label: 'Firefox for iOS', pattern: 'FxiOS' },
       { label: 'IE', pattern: 'IEMobile' },
       { label: 'IE', pattern: 'MSIE' },
-      'Safari',
+      'Safari'
     ])
 
     /* Detectable products (order is important). */
@@ -457,7 +456,7 @@
       'Wii',
       'Xbox One',
       { label: 'Xbox 360', pattern: 'Xbox' },
-      'Xoom',
+      'Xoom'
     ])
 
     /* Detectable manufacturers. */
@@ -480,9 +479,9 @@
         'Galaxy S': 1,
         'Galaxy S2': 1,
         'Galaxy S3': 1,
-        'Galaxy S4': 1,
+        'Galaxy S4': 1
       },
-      Sony: { PlayStation: 1, 'PlayStation Vita': 1 },
+      Sony: { PlayStation: 1, 'PlayStation Vita': 1 }
     })
 
     /* Detectable operating systems (order is important). */
@@ -515,7 +514,7 @@
       'Macintosh',
       'Mac',
       'Windows 98;',
-      'Windows ',
+      'Windows '
     ])
 
     /*------------------------------------------------------------------------*/
@@ -787,7 +786,7 @@
         '(?:Cloud9|CriOS|CrMo|Edge|FxiOS|IEMobile|Iron|Opera ?Mini|OPiOS|OPR|Raven|SamsungBrowser|Silk(?!/[\\d.]+$))',
         'Version',
         qualify(name),
-        '(?:Firefox|Minefield|NetFront)',
+        '(?:Firefox|Minefield|NetFront)'
       ])
     }
     // Detect stubborn layout engines.
@@ -1247,7 +1246,7 @@
             (version && !isSpecialCasedOS ? ' ' + version : '') +
             (this.architecture == 64 ? ' 64-bit' : '')
           )
-        },
+        }
       }
     }
     // Add browser/OS architecture.
@@ -1414,7 +1413,7 @@
        */
       toString: function() {
         return 'null'
-      },
+      }
     }
 
     platform.parse = parse

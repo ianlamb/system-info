@@ -240,7 +240,7 @@
         classPrefix: '',
         enableClasses: !0,
         enableJSClass: !0,
-        usePrefixes: !0,
+        usePrefixes: !0
       },
       _q: [],
       on: function(A, e) {
@@ -254,7 +254,7 @@
       },
       addAsyncTest: function(A) {
         tests.push({ name: null, fn: A })
-      },
+      }
     },
     Modernizr = function() {}
   ;(Modernizr.prototype = ModernizrProto), (Modernizr = new Modernizr())
@@ -281,7 +281,7 @@
         var e = Object.defineProperty({}, 'passive', {
           get: function() {
             A = !0
-          },
+          }
         })
         window.addEventListener('test', null, e)
       } catch (t) {}
@@ -777,7 +777,7 @@
         shivDocument: s,
         createElement: i,
         createDocumentFragment: a,
-        addElements: r,
+        addElements: r
       }
       ;(A.html5 = h),
         s(e),
@@ -857,7 +857,7 @@
       return !1
     }),
     Modernizr.addTest('atobbtoa', 'atob' in window && 'btoa' in window, {
-      aliases: ['atob-btoa'],
+      aliases: ['atob-btoa']
     }),
     Modernizr.addTest('framed', window.location != top.location),
     Modernizr.addTest('sharedworkers', 'SharedWorker' in window),
@@ -908,7 +908,7 @@
       }),
         (A.onload = function() {
           addTest('exiforientation', 2 !== A.width, {
-            aliases: ['exif-orientation'],
+            aliases: ['exif-orientation']
           })
         }),
         (A.src =
@@ -964,7 +964,7 @@
       }),
         (A.onload = function() {
           addTest('webpanimation', 1 == A.width, {
-            aliases: ['webp-animation'],
+            aliases: ['webp-animation']
           })
         }),
         (A.src =
@@ -995,23 +995,23 @@
           {
             uri:
               'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=',
-            name: 'webp',
+            name: 'webp'
           },
           {
             uri:
               'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA==',
-            name: 'webp.alpha',
+            name: 'webp.alpha'
           },
           {
             uri:
               'data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA',
-            name: 'webp.animation',
+            name: 'webp.animation'
           },
           {
             uri:
               'data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=',
-            name: 'webp.lossless',
-          },
+            name: 'webp.lossless'
+          }
         ],
         t = e.shift()
       A(t.name, t.uri, function(t) {
@@ -2031,7 +2031,7 @@
           prefixes.join('touch-enabled),('),
           'heartz',
           ')',
-          '{#modernizr{top:9px;position:absolute}}',
+          '{#modernizr{top:9px;position:absolute}}'
         ].join('')
         testStyles(e, function(e) {
           A = 9 === e.offsetTop
@@ -2406,7 +2406,7 @@
     return e && domToCSS(e)
   })
   Modernizr.addTest('batteryapi', !!prefixed('battery', navigator), {
-    aliases: ['battery-api'],
+    aliases: ['battery-api']
   })
   var crypto = prefixed('crypto', window)
   Modernizr.addTest('crypto', !!prefixed('subtle', crypto)),
@@ -2523,7 +2523,7 @@
       prefixed('backgroundBlendMode', 'text')
     ),
     Modernizr.addTest('objectfit', !!prefixed('objectFit'), {
-      aliases: ['object-fit'],
+      aliases: ['object-fit']
     }),
     Modernizr.addTest('regions', function() {
       if (isSVG) return !1
@@ -2678,7 +2678,7 @@
           .replace(/\@$/, ''),
         '#modernizr:before { content:" "; font-size:5px;',
         Modernizr._prefixes.join('animation:csspseudoanimations 1ms infinite;'),
-        '}',
+        '}'
       ].join('')
       return (
         Modernizr.testStyles(e, function(e) {
@@ -2747,7 +2747,7 @@
             'RuleWidth',
             'BreakBefore',
             'BreakAfter',
-            'BreakInside',
+            'BreakInside'
           ],
           n = 0;
         n < t.length;
@@ -2768,7 +2768,7 @@
       testAllProps('grid-template-rows', 'none', !0)
     ),
     Modernizr.addTest('displayrunin', testAllProps('display', 'run-in'), {
-      aliases: ['display-runin'],
+      aliases: ['display-runin']
     }),
     Modernizr.addTest('ellipsis', testAllProps('textOverflow', 'ellipsis')),
     Modernizr.addTest('cssfilters', function() {

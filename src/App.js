@@ -212,10 +212,8 @@ class App extends Component {
             <StatItem label="System Time" value={data.device.systemTime} />
             <StatItem label="Timezone" value={data.geo.timezone} />
             <StatItem label="Location" value={data.geo.location} />
-            <StatItem
-              label="Lat/Long"
-              value={`${data.geo.lat}, ${data.geo.lon}`}
-            />
+            <StatItem label="Latitude" value={data.geo.lat} />
+            <StatItem label="Longitude" value={data.geo.lon} />
           </Card>
           <Card title="Graphics">
             <StatItem label="Resolution" value={data.graphics.resolution} />

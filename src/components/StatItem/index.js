@@ -5,6 +5,8 @@ import './styles.css'
 const CHAR_SIZE = 8
 
 const StatItem = ({ label, value, copyable }) => {
+  if (!label || !value) return null
+
   const input = React.createRef()
   const copy = e => {
     if (input && input.current) {

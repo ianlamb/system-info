@@ -1,0 +1,67 @@
+.StatItem {
+  position: relative;
+}
+
+.StatItem.copyable {
+  margin-bottom: -2px;
+}
+
+.StatItem-label {
+  display: inline;
+  line-height: 16px;
+  padding-right: 5px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.StatItem-value {
+  display: inline;
+  line-height: 16px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.StatItem-input-value {
+  position: relative;
+  display: inline;
+  border: 0;
+  line-height: 16px;
+  padding: 0;
+  color: hsla(0, 0%, 0%, 0.9);
+  -webkit-appearance: none;
+  outline: none;
+  font-weight: bold;
+  background: transparent;
+  padding: 4px;
+  letter-spacing: 0.5px;
+}
+
+.StatItem-copy-btn {
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 30px;
+  width: 30px;
+  border: 0;
+  text-align: center;
+  background: transparent;
+  padding: 4px;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  z-index: 3;
+  overflow: hidden;
+  transition: opacity .1s;
+}
+.StatItem.copyable {
+  cursor: pointer;
+}
+.StatItem.copyable:hover .StatItem-copy-btn {
+  opacity: 1;
+}
+
+.StatItem-copy-btn:active:after {
+  -webkit-transition: none;
+  transition: none;
+  height: 18px;
+}

@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  padding: 10px;
 }
 
 .App-logo {
@@ -25,6 +25,7 @@
 
 .App-footer {
   margin-top: 50px;
+  text-align: center;
 }
 
 @keyframes App-logo-spin {
@@ -33,5 +34,40 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.App-toasts {
+  position: fixed;
+  padding: 10px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #ffffff;
+}
+
+.App-toast {
+  animation: fadeOut 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .App-toasts {
+    left: auto;
+  }
+  .App-toast {
+    text-align: right;
   }
 }

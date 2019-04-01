@@ -1,63 +1,71 @@
 .StatItem {
   position: relative;
-}
-
-.StatItem.copyable {
-  margin-bottom: -2px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4px;
 }
 
 .StatItem-label {
+  flex: 1;
   display: inline;
   line-height: 16px;
   padding-right: 5px;
   font-family: 'Courier New', Courier, monospace;
+  text-align: left;
+}
+
+.StatItem-value,
+.StatItem-input-value {
+  display: inline;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  padding: 0;
+  line-height: 16px;
 }
 
 .StatItem-value {
-  display: inline;
-  line-height: 16px;
-  font-weight: bold;
-  letter-spacing: 0.5px;
+  flex: 1;
 }
 
 .StatItem-input-value {
   position: relative;
-  display: inline;
+  margin-top: -3px;
+  height: 18px;
   border: 0;
-  line-height: 16px;
-  padding: 0;
-  color: hsla(0, 0%, 0%, 0.9);
+  font-size: 1rem;
   -webkit-appearance: none;
   outline: none;
-  font-weight: bold;
   background: transparent;
-  padding: 4px;
-  letter-spacing: 0.5px;
 }
 
 .StatItem-copy-btn {
-  opacity: 0;
-  position: absolute;
-  right: -3px;
-  top: -3px;
-  height: 30px;
-  width: 30px;
+  opacity: 1;
+  position: relative;
+  top: 1px;
+  margin-top: -3px;
+  height: 20px;
+  width: 20px;
+  float: right;
   border: 0;
+  padding: 0;
   text-align: center;
   background: transparent;
-  padding: 4px;
   cursor: pointer;
   user-select: none;
   outline: none;
   z-index: 3;
   overflow: hidden;
-  transition: opacity .1s;
 }
 .StatItem-copy-btn .svg-icon {
   height: 100%;
   width: 100%;
 }
-.StatItem.copyable {
+
+.StatItem.copyable .StatItem-value {
+  margin-top: -1px;
+}
+.StatItem.copyable .StatItem-value,
+.StatItem.copyable .StatItem-input-value {
   cursor: pointer;
 }
 .StatItem.copyable:hover .StatItem-copy-btn {
@@ -68,4 +76,16 @@
   -webkit-transition: none;
   transition: none;
   height: 18px;
+}
+
+@media (min-width: 768px) {
+  .StatItem {
+    flex-direction: row;
+  }
+  .StatItem-label {
+    text-align: right;
+  }
+  .StatItem-copy-btn {
+    opacity: 0.5;
+  }
 }

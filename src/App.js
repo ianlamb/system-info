@@ -102,7 +102,7 @@ class App extends Component {
     }
 
     // fetch public ip/geo data
-    fetch('http://ip-api.com/json')
+    fetch('//ip-api.com/json')
       .then(res => res.json())
       .then(ip => {
         data.network.publicIp = ip.query

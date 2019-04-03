@@ -1,0 +1,130 @@
+{
+  "network": {
+    "title": "Network",
+    "type": "list",
+    "items": [
+      {
+        "name": "publicIp",
+        "label": "Public IP",
+        "copyable": true
+      },
+      {
+        "name": "localIp",
+        "label": "Local IP",
+        "copyable": true
+      },
+      {
+        "name": "type",
+        "label": "Connection"
+      },
+      {
+        "name": "downlink",
+        "label": "Downlink"
+      },
+      {
+        "name": "rtt",
+        "label": "RTT Estimate"
+      },
+      {
+        "name": "isp",
+        "label": "ISP"
+      }
+    ]
+  },
+  "browser": {
+    "title": "Browser",
+    "type": "list",
+    "items": [
+      {
+        "name": "displayName",
+        "label": "Browser"
+      },
+      {
+        "name": "engine",
+        "label": "Engine"
+      },
+      {
+        "name": "language",
+        "label": "Language"
+      },
+      {
+        "name": "cookies",
+        "label": "Cookies"
+      },
+      {
+        "name": "userAgent",
+        "label": "User Agent"
+      }
+    ]
+  },
+  "device": {
+    "title": "Device",
+    "type": "list",
+    "items": [
+      {
+        "name": "name",
+        "label": "Device"
+      },
+      {
+        "name": "os",
+        "label": "Operating System"
+      },
+      {
+        "name": "battery",
+        "label": "Battery Level"
+      },
+      {
+        "name": "systemTime",
+        "label": "System Time"
+      }
+    ]
+  },
+  "geo": {
+    "title": "Geographic",
+    "type": "list",
+    "items": [
+      {
+        "name": "timezone",
+        "label": "Timezone"
+      },
+      {
+        "name": "location",
+        "label": "Location"
+      },
+      {
+        "name": "lat",
+        "label": "Latitude"
+      },
+      {
+        "name": "lon",
+        "label": "Longitude"
+      }
+    ]
+  },
+  "graphics": {
+    "title": "Graphics",
+    "type": "list",
+    "items": [
+      {
+        "name": "resolution",
+        "label": "Resolution"
+      },
+      {
+        "name": "aspectRatio",
+        "label": "Aspect Ratio"
+      },
+      {
+        "name": "colorDepth",
+        "label": "Color Depth"
+      },
+      {
+        "name": "screenOrientation",
+        "label": "Screen Orientation"
+      },
+      {
+        "name": "gpu",
+        "label": "Video Card"
+      }
+    ]
+  }
+}

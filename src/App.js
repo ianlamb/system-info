@@ -10,11 +10,13 @@ import './App.css'
 import device from './lib/device'
 import { getLocalIP } from './lib/network'
 import { capitalize, getSystemTime } from './lib/helpers'
+import manifest from './manifest.json'
 
 import { getAspectRatio, getScreenOrientation, getGPU } from './lib/graphics'
 import platform from './lib/platform'
 
 const data = store({
+  search: '',
   network: {},
   device: {},
   browser: {},
@@ -29,6 +31,7 @@ class App extends Component {
     data.browser = {
       name: platform.name,
       version: platform.version,
+      displayName: `${platform.name} ${platform.version}`,
       engine: platform.layout,
       userAgent: navigator.userAgent,
       language: navigator.language || navigator.userLanguage || 'Unknown',
@@ -138,58 +141,44 @@ class App extends Component {
 
   render() {
     if (!data) return null
+
+    const search = data.search.toLowerCase()
+    const cards = Object.keys(manifest).map(key => {
+      const card = manifest[key]
+      if (card.type === 'list') {
+        const items = card.items
+          .filter(
+            o =>
+              !data.search ||
+              (o.label.toLowerCase().indexOf(search) !== -1 ||
+                ('' + data[key][o.name]).toLowerCase().indexOf(search) !== -1)
+          )
+          .map(o => (
+            <StatItem
+              label={o.label}
+              value={data[key][o.name]}
+              copyable={o.copyable === true}
+              key={o.name}
+            />
+          ))
+        return (
+          <Card title={card.title} key={key}>
+            {items.length ? (
+              items
+            ) : (
+              <div style={{ textAlign: 'center' }}>--</div>
+            )}
+          </Card>
+        )
+      }
+      return null
+    })
+
     return (
       <div className="App">
         <Header />
-        <Search />
-        <Cards>
-          <Card title="Network">
-            <StatItem
-              label="Public IP"
-              value={data.network.publicIp}
-              copyable={true}
-            />
-            <StatItem
-              label="Local IP"
-              value={data.network.localIp}
-              copyable={true}
-            />
-            <StatItem label="Connection" value={data.network.type} />
-            <StatItem label="Downlink" value={data.network.downlink} />
-            <StatItem label="RTT Estimate" value={data.network.rtt} />
-            <StatItem label="ISP" value={data.network.isp} />
-          </Card>
-          <Card title="Browser">
-            <StatItem
-              label="Browser"
-              value={`${data.browser.name} ${data.browser.version}`}
-            />
-            <StatItem label="Engine" value={data.browser.engine} />
-            <StatItem label="Language" value={data.browser.language} />
-            <StatItem label="Cookies" value={data.browser.cookies} />
-            <StatItem label="User Agent" value={data.browser.userAgent} />
-          </Card>
-          <Card title="Device">
-            <StatItem label="Device" value={data.device.name} />
-            <StatItem label="Operating System" value={data.device.os} />
-            <StatItem label="Battery Level" value={data.device.battery} />
-            <StatItem label="System Time" value={data.device.systemTime} />
-            <StatItem label="Timezone" value={data.geo.timezone} />
-            <StatItem label="Location" value={data.geo.location} />
-            <StatItem label="Latitude" value={data.geo.lat} />
-            <StatItem label="Longitude" value={data.geo.lon} />
-          </Card>
-          <Card title="Graphics">
-            <StatItem label="Resolution" value={data.graphics.resolution} />
-            <StatItem label="Aspect Ratio" value={data.graphics.aspectRatio} />
-            <StatItem label="Color Depth" value={data.graphics.colorDepth} />
-            <StatItem
-              label="Screen Orientation"
-              value={data.graphics.screenOrientation}
-            />
-            <StatItem label="Video Card" value={data.graphics.gpu} />
-          </Card>
-        </Cards>
+        <Search store={data} />
+        <Cards>{cards}</Cards>
         <Footer />
         <Toasts />
       </div>

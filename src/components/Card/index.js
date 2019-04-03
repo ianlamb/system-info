@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.css'
 
-export const Cards = ({ children }) => <div className="Cards">{children}</div>
+export const Cards = ({ children }) => <main className="Cards">{children}</main>
 
 export const Card = ({ children, title }) => (
   <section className="Card">

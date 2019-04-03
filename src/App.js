@@ -8,7 +8,7 @@ import { Cards, Card } from './components/Card'
 import StatItem from './components/StatItem'
 import './App.css'
 import device from './lib/device'
-import { getLocalIP } from './lib/network'
+import network from './lib/network'
 import { capitalize, getSystemTime } from './lib/helpers'
 import manifest from './manifest.json'
 
@@ -40,7 +40,7 @@ class App extends Component {
     data.device = {
       name: `${capitalize(device.type)}`,
       os: platform.os ? platform.os.toString() : 'Unknown',
-      battery: 'n/a',
+      battery: '',
       systemTime: ''
     }
     data.network = {
@@ -48,8 +48,8 @@ class App extends Component {
       publicIp: '',
       isp: '',
       type: '',
-      downlink: `${navigator.connection.downlink || 0} Mb/s`,
-      rtt: `${navigator.connection.rtt || 0} milliseconds`
+      downlink: network.getDownlink(),
+      rtt: network.getRTT()
     }
     data.graphics = {
       resolution: `${window.screen.width} x ${window.screen.height}`,
@@ -60,7 +60,7 @@ class App extends Component {
     }
 
     // local IP
-    getLocalIP(localIp => {
+    network.getLocalIP(localIp => {
       data.network.localIp = localIp
     })
 

@@ -56,6 +56,22 @@ export function getLocalIP(callback) {
   }
 }
 
+export function getDownlink() {
+  if (!navigator || !navigator.connection) {
+    return null
+  }
+  return `${navigator.connection.downlink || 0} Mb/s`
+}
+
+export function getRTT() {
+  if (!navigator || !navigator.connection) {
+    return null
+  }
+  return `${navigator.connection.rtt || 0} milliseconds`
+}
+
 export default {
-  getLocalIP
+  getLocalIP,
+  getDownlink,
+  getRTT
 }

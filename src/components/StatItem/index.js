@@ -6,7 +6,7 @@ const CHAR_SIZE = 8
 
 const StatItem = ({ label, value, copyable }) => {
   const input = React.createRef()
-  const copy = e => {
+  let copy = e => {
     if (input && input.current) {
       input.current.select()
       document.execCommand('copy')
@@ -36,7 +36,7 @@ const StatItem = ({ label, value, copyable }) => {
               type="text"
               className="StatItem-input"
               ref={input}
-              value={value}
+              value={value || '--'}
               style={{
                 width: value ? `${(value.length + 1) * CHAR_SIZE}px` : '0'
               }}

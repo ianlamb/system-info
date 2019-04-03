@@ -11,6 +11,7 @@ import device from './lib/device'
 import network from './lib/network'
 import { capitalize, getSystemTime } from './lib/helpers'
 import manifest from './manifest.json'
+import throttle from 'lodash/throttle'
 
 import { getAspectRatio, getScreenOrientation, getGPU } from './lib/graphics'
 import platform from './lib/platform'
@@ -63,6 +64,9 @@ class App extends Component {
     network.getLocalIP(localIp => {
       data.network.localIp = localIp
     })
+
+    // downlink
+    network.testDownlink(result => (data.network.downlink = result))
 
     // system clock
     function updateClock() {
@@ -123,15 +127,18 @@ class App extends Component {
       })
 
     // event listeners
-    window.addEventListener('resize', () => {
-      console.log('resize event fired')
-      data.graphics.resolution = `${window.screen.width} x ${
-        window.screen.height
-      }`
-      data.graphics.aspectRatio = getAspectRatio()
-    })
+    window.addEventListener(
+      'resize',
+      throttle(() => {
+        console.log('Event Fired: resize')
+        data.graphics.resolution = `${window.screen.width} x ${
+          window.screen.height
+        }`
+        data.graphics.aspectRatio = getAspectRatio()
+      }, 100)
+    )
     window.addEventListener('rotationchange', () => {
-      console.log('rotationchange event fired')
+      console.log('Event Fired: rotationchange')
       window.setTimeout(
         () => (data.graphics.screenOrientation = getScreenOrientation()),
         0

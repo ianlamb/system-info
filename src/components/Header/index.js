@@ -20,6 +20,7 @@ class Header extends Component {
     this.setState({
       theme: 'dark'
     })
+    console.log('Set theme to "Dark"')
   }
 
   setLightTheme() {
@@ -28,6 +29,7 @@ class Header extends Component {
     this.setState({
       theme: 'light'
     })
+    console.log('Set theme to "Light"')
   }
 
   loadThemePreference() {

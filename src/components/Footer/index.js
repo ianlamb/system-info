@@ -18,7 +18,7 @@ class Footer extends Component {
           <a
             href="https://github.com/ianlamb/device-probe"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             View Source
           </a>{' '}
@@ -26,13 +26,17 @@ class Footer extends Component {
           <a
             href="https://github.com/ianlamb/device-probe/issues"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             submit an Issue
           </a>
           <br />
           Made with {'<3'} by{' '}
-          <a href="http://ianlamb.com" target="_blank" rel="noreferrer">
+          <a
+            href="http://ianlamb.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Ian Lamb
           </a>
         </p>

@@ -16,9 +16,11 @@ class Toasts extends Component {
   componentWillMount() {
     window.addEventListener('textcopied', e => {
       if (e.detail) {
-        this.addToast(
-          `Copied ${e.detail.name} "${e.detail.value}" to clip board.`
-        )
+        const message = `Copied ${e.detail.name} "${
+          e.detail.value
+        }" to clip board.`
+        this.addToast(message)
+        console.log(message)
       }
     })
   }

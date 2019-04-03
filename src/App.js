@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { view, store } from 'react-easy-state'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Search from './components/Search'
+import Toasts from './components/Toasts'
 import { Cards, Card } from './components/Card'
 import StatItem from './components/StatItem'
 import './App.css'
@@ -21,18 +23,7 @@ const data = store({
   graphics: {}
 })
 
-const TOAST_TTL = 5000
-
 class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.toastCount = 0
-    this.state = {
-      toasts: []
-    }
-  }
-
   componentDidMount() {
     // set initial data
     data.browser = {
@@ -143,35 +134,6 @@ class App extends Component {
         0
       )
     })
-    window.addEventListener('textcopied', e => {
-      if (e.detail) {
-        this.addToast(
-          `Copied ${e.detail.name} "${e.detail.value}" to clip board.`
-        )
-      }
-    })
-  }
-
-  componentDidUpdate() {}
-
-  addToast(text) {
-    const toast = {
-      id: this.toastCount++,
-      text
-    }
-    this.setState({
-      toasts: [...this.state.toasts, toast]
-    })
-    window.setTimeout(() => {
-      this.removeToast(toast.id)
-    }, TOAST_TTL)
-  }
-
-  removeToast(id) {
-    let toasts = this.state.toasts.filter(toast => toast.id !== id)
-    this.setState({
-      toasts
-    })
   }
 
   render() {
@@ -179,6 +141,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <Search />
         <Cards>
           <Card title="Network">
             <StatItem
@@ -228,14 +191,7 @@ class App extends Component {
           </Card>
         </Cards>
         <Footer />
-
-        <ul className="App-toasts">
-          {this.state.toasts.map(toast => (
-            <li className="App-toast" key={toast.id}>
-              {toast.text}
-            </li>
-          ))}
-        </ul>
+        <Toasts />
       </div>
     )
   }

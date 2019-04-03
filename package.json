@@ -1,6 +1,7 @@
 {
   "name": "device-probe",
   "version": "0.1.0",
+  "author": "Ian Lamb",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",

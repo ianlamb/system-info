@@ -99,12 +99,14 @@ export async function testDownlink(callback) {
   }).then(() => {
     const end = performance.now()
     const seconds = (end - start - pong) / 1000
-    const size = bytes(Math.floor(FILE_SIZE_BYTES / seconds), {
-      unitSeparator: ' '
-    })
-    const result = `${size}/s`
-    callback(`${size}/s`)
-    return result
+    const sizeTokens = bytes(Math.floor((FILE_SIZE_BYTES / seconds) * 8), {
+      // 1MB = 8Mb
+      unitSeparator: ':'
+    }).split(':')
+    // convert bytes labeling to bits
+    const size = `${sizeTokens[0]} ${sizeTokens[1][0]}bps`
+    callback(size)
+    return size
   })
 }
 

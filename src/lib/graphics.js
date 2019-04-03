@@ -1,9 +1,9 @@
 export function checkWebGLSupport() {
-  var A = document.createElement('canvas'),
-    e =
-      'probablySupportsContext' in A
-        ? 'probablySupportsContext'
-        : 'supportsContext'
+  const A = document.createElement('canvas')
+  const e =
+    'probablySupportsContext' in A
+      ? 'probablySupportsContext'
+      : 'supportsContext'
   return e in A
     ? A[e]('webgl') || A[e]('experimental-webgl')
     : 'WebGLRenderingContext' in window
@@ -32,6 +32,7 @@ export function getScreenOrientation() {
 export function getGPU() {
   if (checkWebGLSupport()) {
     const canvas = document.createElement('canvas')
+    canvas.style.display = 'none'
     document.body.appendChild(canvas)
     const gl = canvas.getContext('webgl')
     if (canvas.getContext('webgl')) {

@@ -26,17 +26,23 @@ const StatItem = ({ label, value, copyable }) => {
   return (
     <div className={classnames('StatItem', { copyable: copyable })}>
       <div className="StatItem-label">{label}</div>
-      <div className="StatItem-value" data-name={label} onClick={copy}>
+      <div
+        className="StatItem-value"
+        data-name={label}
+        onClick={copy}
+        title="Copy"
+      >
         {copyable ? (
           <React.Fragment>
             <input
               type="text"
-              className="StatItem-input-value"
+              className="StatItem-input"
               ref={input}
               value={value}
               style={{
                 width: value ? `${(value.length + 1) * CHAR_SIZE}px` : '0'
               }}
+              readOnly
             />
             <button className="StatItem-copy-btn">
               <svg className="svg-icon" viewBox="0 0 20 20">

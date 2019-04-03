@@ -1,0 +1,42 @@
+.Header {
+  display: flex;
+  flex-direction: column;
+}
+
+.Header-left {
+  flex: 1;
+}
+
+.Header-right {
+  flex: 1;
+}
+
+.Header-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.Header-theme-btn {
+  background-color: var(--fg-color);
+  display: inline-block;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 0;
+  user-select: none;
+  outline: none;
+}
+
+.Header-search {
+}
+
+@media (min-width: 768px) {
+  .Header {
+    flex-direction: row;
+  }
+  .Header-right {
+    text-align: right;
+  }
+}

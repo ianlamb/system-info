@@ -15,7 +15,7 @@
 }
 
 .StatItem-value,
-.StatItem-input-value {
+.StatItem-input {
   display: inline;
   font-weight: bold;
   letter-spacing: 0.5px;
@@ -27,7 +27,8 @@
   flex: 1;
 }
 
-.StatItem-input-value {
+.StatItem-input {
+  color: var(--fg-color);
   position: relative;
   margin-top: -3px;
   height: 18px;
@@ -65,7 +66,7 @@
   margin-top: -1px;
 }
 .StatItem.copyable .StatItem-value,
-.StatItem.copyable .StatItem-input-value {
+.StatItem.copyable .StatItem-input {
   cursor: pointer;
 }
 .StatItem.copyable:hover .StatItem-copy-btn {
@@ -86,6 +87,6 @@
     text-align: right;
   }
   .StatItem-copy-btn {
-    opacity: 0.5;
+    opacity: 0.75;
   }
 }

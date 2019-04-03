@@ -10,10 +10,10 @@ SVG Icons - svgicons.sparkk.fr
 .svg-icon path,
 .svg-icon polygon,
 .svg-icon rect {
-  fill: #333333;
+  fill: var(--fg-color);
 }
 
 .svg-icon circle {
-  stroke: #333333;
+  stroke: var(--fg-color);
   stroke-width: 1;
 }

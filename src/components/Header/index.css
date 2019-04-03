@@ -1,6 +1,6 @@
 .Header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .Header-left {
@@ -9,6 +9,7 @@
 
 .Header-right {
   flex: 1;
+  text-align: right;
 }
 
 .Header-title {
@@ -21,22 +22,17 @@
   background-color: var(--fg-color);
   display: inline-block;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: 0;
   user-select: none;
   outline: none;
 }
 
-.Header-search {
-}
-
 @media (min-width: 768px) {
-  .Header {
-    flex-direction: row;
-  }
-  .Header-right {
-    text-align: right;
+  .Header-theme-btn {
+    width: 30px;
+    height: 30px;
   }
 }

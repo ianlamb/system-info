@@ -1,19 +1,45 @@
 .Search {
-  margin: -38px auto 20px;
-  width: 768px;
+  position: relative;
+  margin: -36px auto 20px;
+  width: 100%;
+  max-width: 768px;
+  padding-top: 0;
+  transition: padding 0.1s;
 }
 .Search:after {
   content: '';
   display: block;
   position: relative;
   margin: 0 auto;
+  max-width: 768px;
   width: 0;
   height: 1px;
   background-color: var(--fg-color);
-  transition: width 0.1s;
+  animation: shrink 0.1s;
+  animation-fill-mode: forwards;
+}
+.Search.active {
+  padding-top: 30px;
 }
 .Search.active:after {
-  width: 768px;
+  animation: expand 0.1s;
+  animation-fill-mode: forwards;
+}
+@keyframes expand {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes shrink {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
 }
 
 .Search-input {
@@ -47,4 +73,7 @@
 }
 
 @media (min-width: 768px) {
+  .Search.active {
+    padding-top: 0;
+  }
 }

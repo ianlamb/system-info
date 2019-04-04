@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
-import './svg-icons.css'
-import './polyfills/String.prototype.padStart'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
+// import './vendor/modernizr'
+import './polyfills/String.prototype.padStart'
+import './index.css'
+import './svg-icons.css'
 
 ReactDOM.render(<App />, document.getElementById('root'))
 

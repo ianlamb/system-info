@@ -66,7 +66,7 @@ class App extends Component {
     })
 
     // downlink
-    network.testDownlink(result => (data.network.downlink = result))
+    // network.testDownlink(result => (data.network.downlink = result))
 
     // system clock
     function updateClock() {
@@ -135,6 +135,10 @@ class App extends Component {
           window.screen.height
         }`
         data.graphics.aspectRatio = getAspectRatio()
+        window.setTimeout(
+          () => (data.graphics.screenOrientation = getScreenOrientation()),
+          0
+        )
       }, 100)
     )
     window.addEventListener('rotationchange', () => {

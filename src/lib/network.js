@@ -88,26 +88,40 @@ export function getPing() {
   })
 }
 
+function test1MB() {
+  return fetch(`/1MB.zip?cacheBust=${Math.random()}`, {
+    headers: { 'Accept-Encoding': 'q=0' }
+  })
+}
+
 export async function testDownlink(callback) {
   const FILE_SIZE_BYTES = 1000000 // 1MB
-  const start = performance.now()
   const pong = await getPing()
   console.log('Ping to ianlamb.com', pong)
 
-  return fetch(`/1MB.zip?cacheBust=${Math.random()}`, {
-    headers: { 'Accept-Encoding': 'q=0' }
-  }).then(() => {
+  let aggregateSize = 0
+  let aggregateTime = 0
+  for (let i = 0; i < 10; i++) {
+    const start = performance.now()
+    await test1MB()
     const end = performance.now()
-    const seconds = (end - start - pong) / 1000
-    const sizeTokens = bytes(Math.floor((FILE_SIZE_BYTES / seconds) * 8), {
+    const seconds = Math.max(0, end - start - pong) / 1000
+    aggregateSize += FILE_SIZE_BYTES
+    aggregateTime += seconds
+    console.log(aggregateSize, aggregateTime)
+    const size = bytes(Math.floor((aggregateSize / aggregateTime) * 8), {
       // 1MB = 8Mb
       unitSeparator: ':'
-    }).split(':')
-    // convert bytes labeling to bits
-    const size = `${sizeTokens[0]} ${sizeTokens[1][0]}bps`
-    callback(size)
-    return size
-  })
+    })
+    let speed = '--'
+    if (size) {
+      const sizeTokens = size.split(':')
+      // convert bytes labeling to bits
+      speed = `${sizeTokens[0]} ${sizeTokens[1][0]}bps`
+    }
+    callback(speed)
+  }
+  return aggregateTime
 }
 
 export default {

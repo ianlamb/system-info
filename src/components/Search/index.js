@@ -45,6 +45,9 @@ class Search extends Component {
 
   componentDidMount() {
     this.input.current.focus()
+    window.addEventListener('blur', () => {
+      this.input.current.blur()
+    })
   }
 
   render() {

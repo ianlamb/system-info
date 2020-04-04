@@ -1,9 +1,17 @@
+version: 2.1
 orbs:
   docker: circleci/docker@1.0.1
-version: 2.1
+  node: circleci/node@2.0.1
 workflows:
   build-and-publish-docker-image:
     jobs:
+      - node-install:
+          docker:
+            - image: 'cimg/base:stable'
+          steps:
+            - node/install:
+              node-version: latest
+            - run: node --version
       - docker/publish:
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           context: main

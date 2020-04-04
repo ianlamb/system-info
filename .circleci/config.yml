@@ -13,8 +13,10 @@ jobs:
       - run:
           name: build and push docker image
           command: |
-            echo TAG=$CIRCLE_BUILD_NUM
-            echo IMAGE_NAME=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+            TAG=$CIRCLE_BUILD_NUM
+            echo TAG=$TAG
+            IMAGE_NAME=$DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
+            echo IMAGE_NAME=$IMAGE_NAME
             docker build -t $IMAGE_NAME:$TAG -t $IMAGE_NAME:latest .
             
             echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_LOGIN" --password-stdin

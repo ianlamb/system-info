@@ -1,6 +1,7 @@
 version: 2.1
 jobs:
   build:
+    context: main
     docker:
       - image: circleci/node:10.16.3
     steps:
@@ -21,4 +22,3 @@ jobs:
           command: |
             echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_LOGIN" --password-stdin
             docker push $IMAGE_NAME:latest
-          context: main

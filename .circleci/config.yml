@@ -2,10 +2,13 @@ version: 2.1
 orbs:
   docker: circleci/docker@1.0.1
   node: circleci/node@2.0.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.16.3
 workflows:
   build-and-publish-docker-image:
     jobs:
       - docker/publish:
-          - image: circleci/node:10.16.3
-          - image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           context: main

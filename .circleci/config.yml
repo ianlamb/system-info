@@ -13,7 +13,7 @@ jobs:
       - run:
           name: build docker image
           command: |
-            TAG=$CIRCLE_BUILD_NUM_DOCKER
+            TAG=$CIRCLE_BUILD_NUM
             IMAGE_NAME=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
             docker build -t $IMAGE_NAME:$TAG -t $IMAGE_NAME:latest .
       - run:

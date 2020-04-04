@@ -5,13 +5,7 @@ orbs:
 workflows:
   build-and-publish-docker-image:
     jobs:
-      - node-install:
-          docker:
-            - image: 'cimg/base:stable'
-          steps:
-            - node/install:
-              node-version: latest
-            - run: node --version
       - docker/publish:
+          image: circleci/node:10.16.3
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           context: main

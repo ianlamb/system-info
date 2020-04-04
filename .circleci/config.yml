@@ -6,6 +6,8 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.16.3
+    steps:
+      - checkout
 workflows:
   build-and-publish-docker-image:
     jobs:

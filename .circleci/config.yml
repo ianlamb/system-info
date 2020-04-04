@@ -6,6 +6,6 @@ workflows:
   build-and-publish-docker-image:
     jobs:
       - docker/publish:
-          image: circleci/node:10.16.3
-          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          - image: circleci/node:10.16.3
+          - image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           context: main

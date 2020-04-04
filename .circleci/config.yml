@@ -11,16 +11,13 @@ jobs:
           command: |
             npm ci && npm run build
       - run:
-          name: build docker image
+          name: build and push docker image
           command: |
-            TAG=$CIRCLE_BUILD_NUM
-            IMAGE_NAME=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+            echo TAG=$CIRCLE_BUILD_NUM
+            echo IMAGE_NAME=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
             docker build -t $IMAGE_NAME:$TAG -t $IMAGE_NAME:latest .
-      - run:
-          name: push docker image
-          command: |
+            
             echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_LOGIN" --password-stdin
-            echo $IMAGE_NAME
             docker push $IMAGE_NAME:latest
 workflows:
   version: 2

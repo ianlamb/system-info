@@ -18,7 +18,12 @@ jobs:
             docker build -t $IMAGE_NAME:$TAG -t $IMAGE_NAME:latest .
       - run:
           name: push docker image
-          context: main
           command: |
             echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_LOGIN" --password-stdin
             docker push $IMAGE_NAME:latest
+workflows:
+  version: 2
+  my-workflow:
+    jobs:
+      - build:
+          context: main

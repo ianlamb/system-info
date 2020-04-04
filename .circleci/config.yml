@@ -19,6 +19,6 @@ jobs:
       - run:
           name: push docker image
           command: |
-            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
+            echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_LOGIN" --password-stdin
             docker push $IMAGE_NAME:latest
           context: main

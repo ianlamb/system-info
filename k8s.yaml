@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: device-probe-deployment
+  namespace: default
+  labels:
+    app: device-probe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: device-probe
+  template:
+    metadata:
+      labels:
+        app: device-probe
+    spec:
+      containers:
+        - name: device-probe
+          image: ianlamb/device-probe
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: device-probe-service
+  namespace: default
+  labels:
+    app: device-probe
+  annotations:
+    service.beta.kubernetes.io/do-loadbalancer-certificate-id: "71641b6d-8710-4f0d-a08d-7cd9f96a0912"
+    service.beta.kubernetes.io/do-loadbalancer-protocol: "https"
+    service.beta.kubernetes.io/do-loadbalancer-hostname: "device.ianlamb.com"
+spec:
+  selector:
+    app: device-probe
+  ports:
+    - port: 80
+      targetPort: 8080

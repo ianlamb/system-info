@@ -1,0 +1,29 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: build app
+          command: |
+            npm ci && npm run build
+      - run:
+          name: build and push docker image
+          command: |
+            TAG=$CIRCLE_BUILD_NUM
+            echo TAG=$TAG
+            IMAGE_NAME=$DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
+            echo IMAGE_NAME=$IMAGE_NAME
+            docker build -t $IMAGE_NAME:$TAG -t $IMAGE_NAME:latest .
+            
+            echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_LOGIN" --password-stdin
+            docker push $IMAGE_NAME:latest
+workflows:
+  version: 2
+  my-workflow:
+    jobs:
+      - build:
+          context: main

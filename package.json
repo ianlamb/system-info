@@ -17,9 +17,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:docker": "docker build -t device-probe .",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && deploy.sh",
+    "deploy": "kubectl run device-probe --image=device-probe --port=80",
     "format": "prettier --single-quote --no-semi --write ./src/**/*.js"
   },
   "husky": {

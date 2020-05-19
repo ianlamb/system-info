@@ -16,6 +16,10 @@
   animation-fill-mode: forwards;
 }
 
+.App-error {
+  color: maroon;
+}
+
 @keyframes fadeOut {
   0% {
     opacity: 1;

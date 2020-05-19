@@ -20,7 +20,7 @@
     "build:docker": "docker build -t device-probe .",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "kubectl run device-probe --image=device-probe --port=80",
+    "deploy": "git push dokku master",
     "format": "prettier --single-quote --no-semi --write ./src/**/*.js"
   },
   "husky": {
